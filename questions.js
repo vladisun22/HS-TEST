@@ -26,18 +26,6 @@ window.QUESTION_BANK = [
     ],
     correct: 3 },
 
-
-  { q: "Какой режим используется для проверки целостности цепей с помощью Мультиметра ?",
-    type: "imageOptions",
-    options: [
-      { img: "img/V+.png", alt: "A" },
-      { img: "img/V-.png", alt: "B" },
-      { img: "img/Om.png", alt: "C" },
-      { img: "img/11111.png", alt: "D" }
-    ],
-    correct: 3 },
-
-
 { q: "Выберите Транзистор",
     type: "imageOptions",
     options: [
