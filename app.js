@@ -368,14 +368,18 @@ function renderReview(payload){
       </div>`;
     }
 
-    const userLabel = user!=null ? optionToLabel(q.options[user]) : "—";
-    const correctLabel = optionToLabel(q.options[q.correct]);
+  const userLabel = user != null ? optionToLabel(q.options[user]) : "—";
+let correctLine = "";
+if (user === q.correct) {
+  correctLine = `<div class="review-a"><b>Правильный ответ:</b> ${optionToLabel(q.options[q.correct])}</div>`;
+}
 
-    wrap.innerHTML = `
-      <div class="review-q">${header}</div>
-      <div class="review-a"><b>Ваш ответ:</b> ${userLabel}</div>
-      <div class="review-a"><b>Правильный ответ:</b> ${correctLabel}</div>
-    `;
+wrap.innerHTML = `
+  <div class="review-q">${header}</div>
+  <div class="review-a"><b>Ваш ответ:</b> ${userLabel}</div>
+  ${correctLine}
+`;
+
     reviewList.appendChild(wrap);
   });
 }
