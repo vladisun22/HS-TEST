@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Тест для новых сотрудников</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+<header class="head">
+  <div class="head-band">
+    <img src="img/left.png" alt="" class="head-logo" draggable="false">
+
+    <!-- центр: именно этот блок мы скрываем при старте -->
+    <div class="head-center" id="startPanel">
+      <h1 id="pageTitle">Hardware Support Test</h1>
+
+      <div class="init-row">
+        <label for="initials">Инициалы сотрудника:</label>
+        <input id="initials" maxlength="40" placeholder="например: AP">
+      </div>
+
+      <button id="startBtn" class="btn primary">Начать тест</button>
+    </div>
+
+    <img src="img/right.png" alt="" class="head-logo" draggable="false">
+  </div>
+</header>
+
+
+
+
+
+
+    <main id="screenIntro" class="card">
+      <h2>Правила</h2>
+      <ul>
+        <li>Перед началом введите свои инициалы.</li>
+        <li>Каждый тест — случайные 25 вопросов из общего банка.</li>
+        <li>Порядок вопросов и вариантов — случайный.</li>
+        <li>Нельзя перейти дальше, не выбрав ответ.</li>
+      </ul>
+    </main>
+
+    <section id="examUI" class="hidden">
+      <div class="toolbar">
+        <div class="progress"><div id="bar" class="bar"></div></div>
+        <div class="status">
+          <span id="counter">Вопрос 1 / 25</span>
+          <!-- таймер оставлен в DOM, но всегда скрыт -->
+          <span id="timer" class="timer hidden">00:00</span>
+        </div>
+      </div>
+
+      <div id="questionCard" class="card">
+        <div id="qText" class="q-text">Текст вопроса</div>
+        <div id="options" class="options"></div>
+        <div class="nav">
+          <button id="prevBtn" class="btn" disabled>Назад</button>
+          <button id="nextBtn" class="btn primary" disabled>Далее</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultUI" class="hidden">
+      <div class="card">
+        <h2>Результат</h2>
+        <p><b>Инициалы:</b> <span id="rInitials"></span></p>
+        <p><b>Правильных ответов:</b> <span id="rScore"></span> из <span id="rTotal"></span> (<span id="rPct"></span>%)</p>
+        <p><b>Время:</b> <span id="rTime"></span></p>
+        <div class="actions">
+          <button id="downloadCsv" class="btn">Скачать результат (CSV)</button>
+          <button id="restart" class="btn outline">Пройти заново</button>
+        </div>
+      </div>
+
+      <div id="review" class="card">
+        <h3>Разбор вопросов</h3>
+        <div id="reviewList"></div>
+      </div>
+    </section>
+
+    <footer class="foot"><span></span></footer>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

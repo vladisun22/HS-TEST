@@ -1,0 +1,299 @@
+:root{
+  --bg:#0f1115;
+  --card:#151923;
+  --text:#e6e6e6;
+  --muted:#9aa0a6;
+  --accent:#4da3ff;
+  --ok:#2fbf71;
+  --err:#e74c3c;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  background:var(--bg);
+  color:var(--text);
+  height:100vh;
+  overflow:auto; /* скролл разрешён по умолчанию */
+}
+
+.app{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+header.head{
+  flex:0 0 auto;
+  padding:24px 16px;
+  background:#0b0e14;
+  border-bottom:1px solid #2a2f3b;
+  display:flex;
+  justify-content:center;
+}
+.head-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  width:100%;
+  max-width:600px;
+  text-align:center;
+}
+.head-inner h1{
+  margin:0;
+  font-size:26px;
+}
+.init-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  justify-content:center;
+}
+.init-row label{
+  font-size:14px;
+  color:var(--muted);
+}
+.init-row input{
+  padding:8px 10px;
+  border-radius:6px;
+  border:1px solid #2a2f3b;
+  background:#1a1f2a;
+  color:var(--text);
+  width:160px;
+  text-align:center;
+}
+.head-inner .btn{
+  margin-top:8px;
+}
+
+header h1{margin:0; font-size:22px;}
+header .meta{margin-top:10px; display:flex; gap:10px; align-items:center;}
+header .meta-item{display:flex; flex-direction:column; gap:4px;}
+header input{padding:8px; border-radius:6px; border:1px solid #2a2f3b; background:#1a1f2a; color:var(--text);}
+
+.card{
+  background:var(--card);
+  border-radius:12px;
+  padding:16px;  
+  margin:10px 0; 
+}
+
+#examUI{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  overflow:hidden; /* во время теста скролл отключён */
+}
+
+#resultUI{
+  flex:1;
+  overflow:auto;  /* список результатов прокручивается */
+  padding-bottom:20px;
+}
+
+.toolbar{
+  flex:0 0 auto;
+  padding:8px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.progress{flex:1; height:6px; background:#222937; border-radius:4px; overflow:hidden;}
+.bar{height:100%; width:0; background:var(--accent); transition:width .3s;}
+.status{flex:0 0 auto; display:flex; gap:12px; align-items:center;}
+.timer{font-weight:bold;}
+
+/* Карточка вопроса — без скролла */
+#questionCard{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  gap:8px;
+}
+
+/* Фото в самом вопросе */
+.q-media{
+  width:100%;
+  height:min(38vh, 320px); 
+  object-fit:contain;   
+  border-radius:10px;
+  background:#0a0d12;
+  border:1px solid #222937;
+  display:block;
+  margin-bottom:6px;
+}
+
+.q-text{
+  font-size:18px;
+  margin:0 0 6px 0;
+}
+
+.options{
+  flex:1 1 auto;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.option{
+  display:flex; gap:8px; align-items:center;
+  padding:6px 10px; border:1px solid #2a2f3b;
+  border-radius:8px; cursor:pointer;
+}
+.option:hover{background:#1d2331;}
+.option input{margin:0;}
+
+.img-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:8px;
+}
+.imgOption{
+  background:#0b0e14;
+  border:2px solid #2a2f3b;
+  border-radius:12px;
+  padding:8px;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  align-items:center;
+  justify-content:center;
+}
+.imgOption:hover{transform:translateY(-1px); border-color:#3a4152; box-shadow:0 4px 14px rgba(0,0,0,.25);}
+.imgOption img{
+  width:100%;
+  height:min(22vh,220px);  
+  object-fit:contain;      
+  border-radius:10px;
+  background:#0a0d12;
+  border:1px solid #222937;
+}
+.imgOption .caption{font-size:12px; line-height:1; color:var(--muted);}
+.imgOption.selected{border-color:var(--accent);}
+.imgOption.correct{border-color:var(--ok);}
+.imgOption.wrong{border-color:var(--err);}
+
+.nav{margin-top:12px; display:flex; justify-content:flex-end; gap:12px;}
+.btn{padding:8px 16px; border-radius:6px; border:0; cursor:pointer; font-size:15px;}
+.btn.primary{background:var(--accent); color:#fff;}
+.btn.primary:disabled{background:#2a3550; cursor:default;}
+.btn.outline{background:transparent; border:1px solid #3a4152; color:var(--text);}
+
+#resultUI .actions{display:flex; gap:10px; margin-top:12px;}
+.review-item{padding:10px; border-bottom:1px solid #2a2f3b;}
+.review-q{margin-bottom:4px;}
+.review-a{font-size:14px; color:var(--muted);}
+.badge{padding:2px 6px; border-radius:6px; font-size:12px;}
+.badge.ok{background:var(--ok); color:#fff;}
+.badge.err{background:var(--err); color:#fff;}
+
+.foot{flex:0 0 auto; padding:10px 16px; font-size:12px; color:var(--muted); text-align:center;}
+
+.hidden{display:none !important;}
+.shake{animation:shake .3s;}
+@keyframes shake{
+  25%{transform:translateX(-3px);}
+  50%{transform:translateX(3px);}
+  75%{transform:translateX(-3px);}
+}
+
+@media (max-width:720px){
+  .imgOption img{height:min(18vh,160px);} 
+  .q-media{height:min(32vh, 240px);} 
+}
+#restart {
+  display: none !important;
+}
+
+
+header.head{
+  flex:0 0 auto;
+  padding:20px 16px;
+  background:#0b0e14;
+  border-bottom:1px solid #2a2f3b;
+}
+
+
+/* 3-колоночная шапка: слева картинка, центр, справа картинка */
+.head-band{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:120px 1fr 120px; /* ← ширины боковых колонок */
+  align-items:center;
+  column-gap:16px;
+}
+
+.head-logo{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  justify-self:center; /* чтобы логотипы стояли по центру своих колонок */
+}
+
+.head-inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+
+.head-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  text-align:center;
+}
+
+.head-center h1{
+  margin:0;
+  font-size:28px;
+}
+
+.head-inner h1 {
+  margin:0;
+  font-size:26px;
+}
+
+.head-img {
+  width:60px;
+  height:60px;
+  object-fit:contain;
+}
+
+.init-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  justify-content:center;
+}
+.init-row label{
+  font-size:14px;
+  color:var(--muted);
+}
+
+.init-row input{
+  padding:8px 10px;
+  border-radius:6px;
+  border:1px solid #2a2f3b;
+  background:#1a1f2a;
+  color:var(--text);
+  width:200px;
+  text-align:center;
+}
+
+/* На узких экранах уберём боковые картинки */
+@media (max-width:700px){
+  .head-band{ grid-template-columns:1fr; }
+  .head-logo{ display:none; }
+}
