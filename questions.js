@@ -33,7 +33,7 @@ window.QUESTION_BANK = [
       { img: "img/V+.png", alt: "A" },
       { img: "img/V-.png", alt: "B" },
       { img: "img/Om.png", alt: "C" },
-      { img: "img/~.png", alt: "D" }
+      { img: "img/11111.png", alt: "D" }
     ],
     correct: 3 },
 
